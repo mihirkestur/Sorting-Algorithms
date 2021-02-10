@@ -1,5 +1,7 @@
+//extern int global_array[];
+//extern int global_size;
 void selection_sort_implementation(int *, int);
-void bubble_sort_implementation();
+void bubble_sort_implementation(int *, int);
 void merge_sort_implementation();
 void quick_sort_implementation();
 void display(int *, int);
