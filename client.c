@@ -10,7 +10,7 @@ int main(){
 
     //display(random_array, size);
     bubble_sort_implementation(random_array,size);
-    //instantiate_randomlist(random_array, size);
+    selection_sort_implementation(random_array,size);
     //display(random_array, size);
     return 0;
 }
