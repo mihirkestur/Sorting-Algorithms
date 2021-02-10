@@ -3,6 +3,19 @@
 #include<time.h>
 #include "header.h"
 
+void start_clock(){
+    start_time = clock();
+}
+
+void stop_clock(){
+    end_time = clock();
+}
+
+double duration(){
+    double duration = ((double)(end_time-start_time))/CLOCKS_PER_SEC;
+    printf("%f\n\n", duration);
+}
+
 int generate_random_number(){
     int i = rand();
     //printf("%d\t", i);
@@ -16,7 +29,6 @@ int instantiate_randomlist(int random_array[], int size){
 }
 
 void selection_sort_implementation(int array[],int size){
-    clock_t time = clock();
     int minimum_element_index,temp;
     for(int i = 0; i < size-1; i++){
         minimum_element_index = i;
@@ -29,12 +41,8 @@ void selection_sort_implementation(int array[],int size){
         array[minimum_element_index] = array[i];
         array[i] = temp;
     }
-    time = clock() - time;
-    double net_time = ((double)time)/CLOCKS_PER_SEC;
-    printf("%f\n\n", net_time);
 }
 void bubble_sort_implementation(int array[], int size){
-    clock_t time = clock();
     int comparisons;
     for(int i = 0; i < size-1; i++){
         for(int j = 0; j < size - 1 - i; j++){
@@ -45,21 +53,12 @@ void bubble_sort_implementation(int array[], int size){
             }
         }
     }
-    time = clock() - time;
-    double net_time = ((double)time)/CLOCKS_PER_SEC;
-    printf("%f\n\n", net_time);
 }
 void merge_sort_implementation(){
-    clock_t time = clock();
-    time = clock() - time;
-    double net_time = ((double)time)/CLOCKS_PER_SEC;
-    printf("%f\n\n", net_time);
+
 }
 void quick_sort_implementation(){
-    clock_t time = clock();
-    time = clock() - time;
-    double net_time = ((double)time)/CLOCKS_PER_SEC;
-    printf("%f\n\n", net_time);
+
 }
 void display(int array[],int size){
     //sizeof(array);
