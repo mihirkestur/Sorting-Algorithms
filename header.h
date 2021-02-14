@@ -5,8 +5,10 @@ time_t start_time,end_time;
 //algorithms
 void selection_sort_implementation(int *, int);
 void bubble_sort_implementation(int *, int);
-void merge_sort_implementation();
-void quick_sort_implementation();
+void merge_sort_implementation(int *, int, int);
+void merge_sort_assist(int *, int, int, int);
+void quick_sort_implementation(int *, int, int);
+int quick_sort_assist(int *, int, int);
 
 //helper functions
 void display(int *, int); //display the array 
