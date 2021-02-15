@@ -7,20 +7,26 @@ int main(){
     //seeding
     srand(time(0));
     
-    int size = 1000000, random_array[size]; 
+    int size = 0, random_array[size]; 
     instantiate_randomlist(random_array, size);
 
     start_clock();
-    //bubble_sort_implementation(random_array,size);
+    bubble_sort_implementation(random_array,size);
     stop_clock();
     duration();
+    printf("%d\n",comparisons);
+    reset_comparisons();
+    //display(random_array, size);
 
     instantiate_randomlist(random_array, size);
     
     start_clock();
-    //selection_sort_implementation(random_array,size);
+    selection_sort_implementation(random_array,size);
     stop_clock();
     duration();
+    printf("%d\n",comparisons);
+    reset_comparisons();
+    //display(random_array, size);
 
     instantiate_randomlist(random_array, size);
     
@@ -28,6 +34,9 @@ int main(){
     merge_sort_implementation(random_array,0,size);
     stop_clock();
     duration();
+    printf("%d\n",comparisons);
+    reset_comparisons();
+    //display(random_array, size);
 
     instantiate_randomlist(random_array, size);
     
@@ -35,6 +44,8 @@ int main(){
     quick_sort_implementation(random_array,0,size);
     stop_clock();
     duration();
+    printf("%d\n",comparisons);
+    reset_comparisons();
     //display(random_array, size);
     return 0;
 }
