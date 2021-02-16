@@ -1,7 +1,8 @@
-//extern int global_array[];
-//extern int global_size;
+extern int algo;
 time_t start_time,end_time;
-extern int comparisons;
+extern long int comparisons;
+extern double duration;
+
 //algorithms
 void selection_sort_implementation(int *, int);
 void bubble_sort_implementation(int *, int);
@@ -15,5 +16,5 @@ void display(int *, int); //display the array
 int instantiate_randomlist(int *, int); //creates the array of random numbers
 void start_clock(); //assigns time to start time
 void stop_clock(); //assigns time to end time
-double duration(); //calculates difference
-void reset_comparisons(); //resets comparisons variable to 0
+void resetshow_comparisons(); //resets comparisons variable to 0
+void write_file(int, int); //write the data to csv file

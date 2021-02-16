@@ -2,8 +2,20 @@
 #include<stdio.h>
 #include<time.h>
 #include "header.h"
-int comparisons = 0;
-void reset_comparisons(){
+long int comparisons = 0;
+double duration = 0;
+void write_file(int size, int algo){
+    FILE* fs = fopen("info.csv", "a");
+    if(fs == NULL){
+        printf("Couldn't open file\n");
+        return;
+    }
+fprintf(fs, "%d,%d,%f,%ld\n",algo,size,duration,comparisons);
+fclose(fs);
+}
+
+void resetshow_comparisons(){
+    printf("comparisons = %ld\n",comparisons);
     comparisons = 0;
 }
 void start_clock(){
@@ -12,11 +24,8 @@ void start_clock(){
 
 void stop_clock(){
     end_time = clock();
-}
-
-double duration(){
-    double duration = ((double)(end_time-start_time))/CLOCKS_PER_SEC;
-    printf("%f\n", duration);
+    duration = ((double)(end_time-start_time))/CLOCKS_PER_SEC;
+    printf("duration = %f\n", duration);
 }
 
 int instantiate_randomlist(int random_array[], int size){
@@ -54,16 +63,16 @@ void bubble_sort_implementation(int array[], int size){
         }
     }
 }
-void merge_sort_assist(int array[], int l, int m, int r){
-    int n1 = m - l + 1, n2 = r - m, L[n1], R[n2];
+void merge_sort_assist(int array[], int low, int middle, int high){
+    int n1 = middle - low + 1, n2 = high - middle, L[n1], R[n2];
 
     for (int i = 0; i < n1; i++){
-        L[i] = array[l + i];
+        L[i] = array[low + i];
     }
     for (int j = 0; j < n2; j++){
-        R[j] = array[m + 1 + j];
+        R[j] = array[middle + 1 + j];
     } 
-    int i = 0, j = 0, k = l; 
+    int i = 0, j = 0, k = low; 
     while(i < n1 && j < n2){
         ++comparisons;
         if(L[i] <= R[j]){
@@ -100,19 +109,12 @@ void merge_sort_implementation(int array[],int low,int high){
 }
 
 int quick_sort_assist(int arr[], int low, int high){
-    /* This function takes last element as pivot, places 
-   the pivot element at its correct position in sorted 
-    array, and places all smaller (smaller than pivot) 
-   to left of pivot and all greater elements to right 
-   of pivot */
-    int pivot = arr[high];    // pivot 
-    int i = (low - 1);  // Index of smaller element 
-  
+    int pivot = arr[high];     
+    int i = (low - 1);  
     for(int j = low; j <= high- 1; j++){ 
-        ++comparisons;
-        // If current element is smaller than the pivot 
+        ++comparisons; 
         if(arr[j] < pivot){ 
-            i++;    // increment index of smaller element 
+            i++;    
             int temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp; 
@@ -125,17 +127,9 @@ int quick_sort_assist(int arr[], int low, int high){
 }
 
 void quick_sort_implementation(int array[], int low, int high){
-/* The main function that implements QuickSort 
- arr[] --> Array to be sorted, 
-  low  --> Starting index, 
-  high  --> Ending index */
     ++comparisons;
     if(low < high){ 
-        /* pi is partitioning index, arr[p] is now 
-           at right place */
         int pi = quick_sort_assist(array, low, high); 
-        // Separately sort elements before 
-        // partition and after partition 
         quick_sort_implementation(array, low, pi - 1); 
         quick_sort_implementation(array, pi + 1, high); 
     } 
