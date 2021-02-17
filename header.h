@@ -1,6 +1,6 @@
 extern int algo;
 time_t start_time,end_time;
-extern long int comparisons;
+extern long long int comparisons;
 extern double duration;
 
 //algorithms

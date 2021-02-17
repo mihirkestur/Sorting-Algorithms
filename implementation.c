@@ -2,20 +2,20 @@
 #include<stdio.h>
 #include<time.h>
 #include "header.h"
-long int comparisons = 0;
+long long int comparisons = 0;
 double duration = 0;
 void write_file(int size, int algo){
-    FILE* fs = fopen("info.csv", "a");
+    FILE* fs = fopen("test.csv", "a");
     if(fs == NULL){
         printf("Couldn't open file\n");
         return;
     }
-fprintf(fs, "%d,%d,%f,%ld\n",algo,size,duration,comparisons);
+fprintf(fs, "%d,%d,%f,%lld\n",algo,size,duration,comparisons);
 fclose(fs);
 }
 
 void resetshow_comparisons(){
-    printf("comparisons = %ld\n",comparisons);
+    printf("comparisons = %lld\n",comparisons);
     comparisons = 0;
 }
 void start_clock(){
@@ -34,7 +34,15 @@ int instantiate_randomlist(int random_array[], int size){
     }
     return random_array[size];
 }
+void display(int array[],int size){
+    printf("\n");
+    for(int i = 0; i < size; i++){
+        printf("%d\n",array[i]);
+    }
+    printf("\n\n");
+}
 
+//algorithms' implementation
 void selection_sort_implementation(int array[],int size){
     int minimum_element_index,temp;
     for(int i = 0; i < size-1; i++){
@@ -99,8 +107,6 @@ void merge_sort_assist(int array[], int low, int middle, int high){
 void merge_sort_implementation(int array[],int low,int high){
     ++comparisons;
     if (low < high) {
-        // Same as (l+r)/2, but avoids overflow for
-        // large l and h
         int m = low + (high - low) / 2;
         merge_sort_implementation(array, low, m);
         merge_sort_implementation(array, m + 1, high); 
@@ -108,36 +114,29 @@ void merge_sort_implementation(int array[],int low,int high){
     }
 }
 
-int quick_sort_assist(int arr[], int low, int high){
-    int pivot = arr[high];     
+int quick_sort_assist(int array[], int low, int high){
+    int pivot = array[high];     
     int i = (low - 1);  
     for(int j = low; j <= high- 1; j++){ 
         ++comparisons; 
-        if(arr[j] < pivot){ 
+        if(array[j] < pivot){ 
             i++;    
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp; 
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp; 
         } 
     } 
-    int temp = arr[i + 1];
-    arr[i + 1] = arr[high];
-    arr[high] = temp;
+    int temp = array[i + 1];
+    array[i + 1] = array[high];
+    array[high] = temp;
     return (i + 1); 
 }
 
 void quick_sort_implementation(int array[], int low, int high){
     ++comparisons;
     if(low < high){ 
-        int pi = quick_sort_assist(array, low, high); 
-        quick_sort_implementation(array, low, pi - 1); 
-        quick_sort_implementation(array, pi + 1, high); 
+        int pivot = quick_sort_assist(array, low, high); 
+        quick_sort_implementation(array, low, pivot - 1); 
+        quick_sort_implementation(array, pivot + 1, high); 
     } 
-}
-void display(int array[],int size){
-    printf("\n");
-    for(int i = 0; i < size; i++){
-        printf("%d\n",array[i]);
-    }
-    printf("\n\n");
 }
