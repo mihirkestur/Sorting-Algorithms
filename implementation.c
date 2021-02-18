@@ -43,6 +43,19 @@ void display(int array[],int size){
 }
 
 //algorithms' implementation
+void bubble_sort_implementation(int array[], int size){
+    for(int i = 0; i < size-1; i++){
+        for(int j = 0; j < size - 1 - i; j++){
+            ++comparisons;
+            if(array[j] > array[j+1]){
+                int temp = array[j];
+                array[j] = array[j+1];
+                array[j+1] = temp;
+            }
+        }
+    }
+}
+
 void selection_sort_implementation(int array[],int size){
     int minimum_element_index,temp;
     for(int i = 0; i < size-1; i++){
@@ -59,18 +72,7 @@ void selection_sort_implementation(int array[],int size){
         array[i] = temp;
     }
 }
-void bubble_sort_implementation(int array[], int size){
-    for(int i = 0; i < size-1; i++){
-        for(int j = 0; j < size - 1 - i; j++){
-            ++comparisons;
-            if(array[j] > array[j+1]){
-                int temp = array[j];
-                array[j] = array[j+1];
-                array[j+1] = temp;
-            }
-        }
-    }
-}
+
 void merge_sort_assist(int array[], int low, int middle, int high){
     int n1 = middle - low + 1, n2 = high - middle, L[n1], R[n2];
 
