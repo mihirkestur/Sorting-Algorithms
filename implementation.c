@@ -5,7 +5,7 @@
 long long int comparisons = 0;
 double duration = 0;
 void write_file(int size, int algo){
-    FILE* fs = fopen("test.csv", "a");
+    FILE* fs = fopen("final1.csv", "a");
     if(fs == NULL){
         printf("Couldn't open file\n");
         return;

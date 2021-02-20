@@ -16,7 +16,7 @@ int main(){
     */
     int algo = 0,size = 0;
     //start clock, ALGORITHM, stop clock, resetshow comparisons, update csv
-    for(size = 10000; size <= 100000; size = size + 5000){
+    for(size = 100000; size <= 1000000; size = size + 50000){
         printf("\nsize = %d\n",size);
         int *random_array = malloc(size*sizeof(long int));
         instantiate_randomlist(random_array, size);
