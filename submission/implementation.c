@@ -112,17 +112,16 @@ void merge_sort_assist(int array[], int low, int middle, int high){
 void merge_sort_implementation(int array[],int low,int high){
     ++comparisons;
     if (low < high) {
-        int m = low + (high - low) / 2;
-        merge_sort_implementation(array, low, m);
-        merge_sort_implementation(array, m + 1, high); 
-        merge_sort_assist(array, low, m, high);
+        int mid_element = low + (high - low) / 2;
+        merge_sort_implementation(array, low, mid_element);
+        merge_sort_implementation(array, mid_element + 1, high); 
+        merge_sort_assist(array, low, mid_element, high);
     }
 }
 
 int quick_sort_assist(int array[], int low, int high){
-    int pivot = array[high];     
-    int i = (low - 1);  
-    for(int j = low; j <= high- 1; j++){ 
+    int pivot = array[high], i = (low - 1);  
+    for(int j = low; j <= high - 1; j++){ 
         ++comparisons; 
         if(array[j] < pivot){ 
             i++;    
