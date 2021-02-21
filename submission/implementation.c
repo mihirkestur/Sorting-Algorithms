@@ -4,14 +4,17 @@
 #include "header.h"
 long long int comparisons = 0;
 double duration = 0;
-void write_file(int size, int algo){
-    FILE* fs = fopen("final2.csv", "a");
-    if(fs == NULL){
+void write_file(int size, char *file_time,char *file_comp){
+    FILE* time = fopen(file_time, "a");
+    FILE* comp = fopen(file_comp, "a");
+    if(comp == NULL || time == NULL){
         printf("Couldn't open file\n");
         return;
     }
-fprintf(fs, "%d,%d,%f,%lld\n",algo,size,duration,comparisons);
-fclose(fs);
+    fprintf(time, "%d,%f\n",size,duration);
+    fprintf(comp, "%d,%lld\n",size,comparisons);
+    fclose(comp);
+    fclose(time);
 }
 
 void resetshow_comparisons(){
