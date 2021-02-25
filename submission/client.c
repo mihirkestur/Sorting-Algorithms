@@ -1,20 +1,21 @@
+//Mihir Madhusudan Kestur     PES1UG19CS272    4E_1
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
 #include<string.h>
 #include "header.h"
+
 int main(){
     //seeding for random number generation
     srand(time(0));
     /*
-    0:no algorithm
     1:bubble sort
     2:selection sort
     3:merge sort
     4:quick sort
     */
     int size = 0;
-    //start clock, ALGORITHM, stop clock, resetshow comparisons, update csv
+    //start clock, ALGORITHM, stop clock, update csv, resetshow comparisons
     //sizes : 100k, 150k, 200k up to 1000k
     for(size = 100000; size <= 1000000; size = size + 50000){
         printf("\nsize = %d\n",size);

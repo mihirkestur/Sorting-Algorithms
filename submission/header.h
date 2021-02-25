@@ -1,10 +1,11 @@
+//Mihir Madhusudan Kestur     PES1UG19CS272    4E_1
 time_t start_time,end_time;
 extern long long int comparisons;
 extern double duration;
 
 //algorithms
-void selection_sort_implementation(int *, int);
 void bubble_sort_implementation(int *, int);
+void selection_sort_implementation(int *, int);
 void merge_sort_implementation(int *, int, int);
 void merge_sort_assist(int *, int, int, int);
 void quick_sort_implementation(int *, int, int);

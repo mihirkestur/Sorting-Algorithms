@@ -1,3 +1,4 @@
+//Mihir Madhusudan Kestur     PES1UG19CS272    4E_1
 #include<stdlib.h>
 #include<stdio.h>
 #include<time.h>
@@ -8,7 +9,6 @@ void write_file(int size, char *file_time,char *file_comp){
     FILE* time = fopen(file_time, "a");
     FILE* comp = fopen(file_comp, "a");
     if(comp == NULL || time == NULL){
-        printf("Couldn't open file\n");
         return;
     }
     fprintf(time, "%d,%f\n",size,duration);
