@@ -46,6 +46,7 @@ void display(int array[],int size){
 }
 
 //algorithms' implementation
+//This function implements the bubble sort algorithm
 void bubble_sort_implementation(int array[], int size){
     for(int i = 0; i < size-1; i++){
         for(int j = 0; j < size - 1 - i; j++){
@@ -58,10 +59,10 @@ void bubble_sort_implementation(int array[], int size){
         }
     }
 }
-
+//This function implements the selection sort algorithm
 void selection_sort_implementation(int array[],int size){
     int minimum_element_index,temp;
-    for(int i = 0; i < size-1; i++){
+    for(int i = 0; i < size - 1; i++){
         minimum_element_index = i;
         for(int j = i+1; j < size; j++){
             ++comparisons;
@@ -75,40 +76,42 @@ void selection_sort_implementation(int array[],int size){
         array[i] = temp;
     }
 }
-
+//This function implements the merging for the merge sort algorithm
 void merge_sort_assist(int array[], int low, int middle, int high){
-    int n1 = middle - low + 1, n2 = high - middle, L[n1], R[n2];
-
-    for (int i = 0; i < n1; i++){
-        L[i] = array[low + i];
+    int n_first = middle - low + 1;
+    int n_second = high - middle;
+    int first[n_first], second[n_second];
+    for (int i = 0; i < n_first; i++){
+        first[i] = array[low + i];
     }
-    for (int j = 0; j < n2; j++){
-        R[j] = array[middle + 1 + j];
+    for (int j = 0; j < n_second; j++){
+        second[j] = array[middle + 1 + j];
     } 
     int i = 0, j = 0, k = low; 
-    while(i < n1 && j < n2){
+    while(i < n_first && j < n_second){
         ++comparisons;
-        if(L[i] <= R[j]){
-            array[k] = L[i];
+        if(first[i] <= second[j]){
+            array[k] = first[i];
             i++;
         }
         else{
-            array[k] = R[j];
+            array[k] = second[j];
             j++;
         }
         k++;
     }
-    while(i < n1){
-        array[k] = L[i];
+    while(n_first > i){
+        array[k] = first[i];
+        k++;
         i++;
-        k++;
     }
-    while(j < n2){
-        array[k] = R[j];
-        j++;
+    while(n_second > j){
+        array[k] = second[j];
         k++;
+        j++;
     }
 }
+//This function implements the merge sort algorithm
 void merge_sort_implementation(int array[],int low,int high){
     ++comparisons;
     if (low < high) {
@@ -118,9 +121,9 @@ void merge_sort_implementation(int array[],int low,int high){
         merge_sort_assist(array, low, mid_element, high);
     }
 }
-
+//This is the implementation for the partion
 int quick_sort_assist(int array[], int low, int high){
-    int pivot = array[high], i = (low - 1);  
+    int pivot = array[high], i = low - 1;  
     for(int j = low; j <= high - 1; j++){ 
         ++comparisons; 
         if(array[j] < pivot){ 
@@ -135,7 +138,7 @@ int quick_sort_assist(int array[], int low, int high){
     array[high] = temp;
     return (i + 1); 
 }
-
+//This function implements the quick sort algorithm
 void quick_sort_implementation(int array[], int low, int high){
     ++comparisons;
     if(low < high){ 

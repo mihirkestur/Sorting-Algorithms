@@ -1,4 +1,3 @@
-extern int algo;
 time_t start_time,end_time;
 extern long long int comparisons;
 extern double duration;
